@@ -1,11 +1,12 @@
 package com.api.parkingcontrol.services;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.api.parkingcontrol.models.ParkingSpotModel;
@@ -33,5 +34,8 @@ public class ParkingSpotService {
 	}
 	public List<ParkingSpotModel> findAll(){
 		return repository.findAll();
+	}
+	public Optional<ParkingSpotModel> findById(UUID id){
+		return repository.findById(id);
 	}
 }
