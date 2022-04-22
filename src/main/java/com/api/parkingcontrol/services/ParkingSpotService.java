@@ -6,9 +6,11 @@ import java.util.UUID;
 
 import javax.transaction.Transactional;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.api.parkingcontrol.dtos.ParkingSpotDto;
 import com.api.parkingcontrol.models.ParkingSpotModel;
 import com.api.parkingcontrol.repositories.ParkingSpotRepository;
 
@@ -41,5 +43,9 @@ public class ParkingSpotService {
 	@Transactional
 	public void delete(ParkingSpotModel parkingSpotModel) {
 		repository.delete(parkingSpotModel);
+	}
+	public void update(ParkingSpotDto parkingSpotDto,ParkingSpotModel parkingSpotModel ) {
+		BeanUtils.copyProperties(parkingSpotDto, parkingSpotModel);
+		
 	}
 }
